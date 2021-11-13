@@ -10,6 +10,11 @@ export default class GifSearch extends Component {
             input: event.target.value
         })
     }
+    
+    handleSubmit= (event)=>{
+        event.preventDefault()
+        this.props.userInput(this.state.input)
+    }
 
    
     render() {
@@ -25,7 +30,7 @@ export default class GifSearch extends Component {
                         placeholder="Search" 
                         onChange={this.saveTextInput}
                     />
-                    <button type="submit" value={this.state.input} onClick={this.props.submitHandler}>Search</button>
+                    <button type="submit" onClick={this.handleSubmit}>Search</button>
                 </form>
                 
             </div>

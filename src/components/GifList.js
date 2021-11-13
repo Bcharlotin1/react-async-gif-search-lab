@@ -2,12 +2,16 @@ import React, { Component } from 'react'
 
 export default class GifList extends Component {
     renderListformate = () =>{
-        this.props.gifArray.map((gif)=>{
+        console.log(this.props.gifArray)
+        return this.props.gifArray.map((gif)=>{
             return(
-               <li>gif</li>
+               <li>
+                   <img alt={gif.url} src={gif.url} />
+               </li>
             )
         })
     }
+    
     render() {
         return (
             <div>

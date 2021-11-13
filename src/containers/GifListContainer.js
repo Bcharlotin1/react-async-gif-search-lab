@@ -8,7 +8,11 @@ export default class GifListContainer extends Component {
     }
 
     componentDidMount(){
-        fetch('https://api.giphy.com/v1/gifs/search?q=YOUR QUERY HERE&api_key=dc6zaTOxFJmzC&rating=g')
+      this.fetchGifs()
+    }
+
+    fetchGifs = (userInput = "dolphin" )=>{
+        fetch(`https://api.giphy.com/v1/gifs/search?q=${userInput}&api_key=jmQbEo0EgCWFPtAgs4rBNBG9Anxb46AP`)
         .then((response) => response.json())
         .then((data)=>{
             this.setState({
@@ -17,17 +21,12 @@ export default class GifListContainer extends Component {
         })
     }
 
-    handleSubmit = (event, query)=>{
-        event.preventDefault()
-        debugger
-        
-    }
 
     render() {
         return (
             <div >
                 <GifList gifArray={this.state.gifArray}/>
-                <GifSearch  submitHandler={this.handleSubmit}/>
+                <GifSearch userInput={this.fetchGifs}/>
             </div>
         )
     }
